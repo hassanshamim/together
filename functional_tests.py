@@ -6,22 +6,26 @@ class NewVisitorTest(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
 
     def tearDown(self):
         self.browser.quit()
-        self.browser.implicitly_wait(5)
 
     def test_new_visitor_visits_site(self):
 
         # Yousuf has heard about my cool new online app.  He goes to check out its homepage
+        self.browser.get('http://localhost:8000')
 
         # He notices the page title and header mention the app name
-        self.browser.get('http://localhost:8000')
         self.assertIn('Together', self.browser.title)
-        self.fail('Finish the test!')
+        header_text = self.browser.find_element_by_tag_name('h1').text
+        self.assertIn('Together', header_text)
 
         # He is invited to sign up.
+        signup_link =  self.browser.find_elements_by_link_text('Sign Up')
+        self.assertFalse(signup_link == [])
 
+        self.fail('finish the test')
         # He clicks the 'Sign up' link
 
         # He is taken to the SignUp page
