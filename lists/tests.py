@@ -18,3 +18,11 @@ class ListPageTest(TestCase):
         self.assertIn(b'<title>To-Do lists</title>', response.content)
         self.assertTrue(response.content.endswith(b'</html>'))
 
+    def user_creates_list(self):
+        # As a logged in user Joan...
+        # I create a To-Do list 'Gifts'
+        # I add 'Grab bag gift' as a todo item
+        # I describe it as "Less then $5, wrapped, to be exchanged after dinner before dessert"
+
+
+
